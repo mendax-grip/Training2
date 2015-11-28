@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>DEEP LEARNING DISCRETE ELEMENT METHOD</title>
+<meta name="author" content="(SIDDHARTH KANUNGO)"/>
+<link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme"/>
+<link rel="stylesheet" href=""/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1>DEEP LEARNING DISCRETE ELEMENT METHOD</h1>
+<h2>SIDDHARTH KANUNGO</h2>
+<h2><a href="mailto:siddharth@siddharth-Lenovo-G580">Final Year Project</a></h2>
+<h2>National Insitute of Technology,</h2>
+</section>
+
+<section>
+<section id="slide-orgheadline1">
+<h2 id="orgheadline1">Project Supervised by</h2>
+<ul>
+<li class="fragment appear">Prof. (Dr.) Tarun Kanti Bandopadhyay</li>
+<li class="fragment appear">Dr. Ryan Gosselin</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline2">
+<h2 id="orgheadline2">Problem Statement</h2>
+<ul>
+<li class="fragment appear">Finding Reynolds Number Equivalent for Mixing Powders in a feedframe</li>
+<li class="fragment appear">Learning DEM Particle Behaviour from data</li>
+<li class="fragment appear">Optimising CFD data using ANN</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline5">
+<h2 id="orgheadline5">Context</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div></section>
+<section id="slide-orgheadline3">
+<h3 id="orgheadline3">Feedframe</h3>
+<ul>
+<li>Discrete Element Modelling of Feedframe</li>
+<li>Calculating Danckwert's Segregation Intensity</li>
+<li>Plotting DI w.r.t time and with other factors to find a pattern common to all</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline4">
+<h3 id="orgheadline4">DEM Particle Behaviour from data</h3>
+<ul>
+<li>With enough training sets, can a deep learning algorithm essentially recreate an entire simulation without appreciable loss of accuracy and precision ?</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline12">
+<h2 id="orgheadline12">Aims and objectives</h2>
+<div class="outline-text-2" id="text-orgheadline12">
+</div></section>
+<section id="slide-orgheadline8">
+<h3 id="orgheadline8">FeedFrame</h3>
+<ul>
+<li>Plotting SI vs Time Vs Factor</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline6">
+<h4 id="orgheadline6">Factors</h4>
+<ul>
+<li>Angular Velocity</li>
+<li>Radius Ratio</li>
+<li>Density Ratio</li>
+<li>Inclination Angle</li>
+<li>Geometric Manipulation</li>
+<li>Volume Percentage of Particles</li>
+<li>Sinusodial rotation (Frequency)</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline7">
+<h4 id="orgheadline7">Plot</h4>
+<p>
+Interpolating the results to generate a 3D surface plots using appropriate methods
+</p>
+</section>
+<section id="slide-orgheadline11">
+<h3 id="orgheadline11">DEM Learning</h3>
+<ul>
+<li>Creating a Deep Network that can predict the time series of a DEM Simulation</li>
+<li>The whole simulation of DEM can be concatenated into a matrix which will have the following format
+<ul>
+<li>P x f x T</li>
+
+</ul></li>
+
+</ul>
+<p>
+Here P is the number of particles, f is the number of features ( Positions, Velocity and Force) and T is the timesteps.
+</p>
+
+</section>
+<section id="slide-orgheadline9">
+<h4 id="orgheadline9">Time Series prediction using Neural Network</h4>
+
+<div class="figure">
+<p><img src="./Project2/train.gif" alt="train.gif" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline10">
+<h4 id="orgheadline10">Neural Network with Memory</h4>
+<div class="figure">
+<p><img src="./Project2/rnn2.png" alt="rnn2.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline15">
+<h2 id="orgheadline15">Tasks</h2>
+<p>
+Progress on project so far 
+</p>
+</section>
+<section id="slide-orgheadline13">
+<h3 id="orgheadline13">Feedframe</h3>
+<ul>
+<li><code>[75%]</code>  Building a computational pipeline to calculate the simulation
+<ul>
+<li class="on"><code>[X]</code> Using LIGGGHTS as a shared libary</li>
+<li class="on"><code>[X]</code> Creating input structure</li>
+<li class="off"><code>[&#xa0;]</code> Taking snapshots of the simulation</li>
+<li class="on"><code>[X]</code> PyDoIt Make tool to automate tasks</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li><code>[40%]</code> Use of Design of Experiment for Factorial Design
+<ul>
+<li class="on"><code>[X]</code> Choice of Factors</li>
+<li class="on"><code>[X]</code> Selection of ranges</li>
+<li class="off"><code>[&#xa0;]</code> Specific Levels at which runs will be made</li>
+<li class="off"><code>[&#xa0;]</code> Selection of Response Variables</li>
+<li class="off"><code>[&#xa0;]</code> Choice of Experimental Design</li>
+
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> Performing the experiment</li>
+<li class="off"><code>[&#xa0;]</code> Data Analysis</li>
+<li class="off"><code>[&#xa0;]</code> Conclusions</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline14">
+<h3 id="orgheadline14">DEM Learning</h3>
+<ul>
+<li><code>[50%]</code> Literature Review
+<ul>
+<li class="on"><code>[X]</code> Learning about RNNs and Restricted Boltzman Machines</li>
+<li class="off"><code>[&#xa0;]</code> Learning more about Deep Learning and hyperparameter optimization</li>
+
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> Training an RNN on a smaller dataset</li>
+<li class="off"><code>[&#xa0;]</code> If the training seems successful, then use of cluster to train the feedframe model</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline16">
+<h2 id="orgheadline16">Problems</h2>
+<ul>
+<li>Require more computational power approx 128 GB RAM to train RNNs which take a lot of time ( 3 days for 200K datasets ) to train</li>
+<li>Can rent GPUs for very cheap per hour price</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline17">
+<h2 id="orgheadline17">Conclusions</h2>
+<ul>
+<li>Deep Learning is a vast field and which is changing/improving at a tremendous rate( which is a good thing for mankind)</li>
+<li>Using Design of Experiments will provide a good way to detect any sort of phase change in the mixing</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline18">
+<h2 id="orgheadline18">Thank you</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
